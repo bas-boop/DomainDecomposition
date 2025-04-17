@@ -1,0 +1,14 @@
+@startumlclass Human
+A --> B     : solid arrow
+A ..> B     : dashed arrow
+A o-- B     : aggregation
+A *-- B     : composition
+A <|-- B    : inheritance
+A <-- B     : reverse arrow
+
+interface Eater {
+  +eat(Food)
+}
+
+Human ..|> Eater : Human implements Eater
+@enduml
