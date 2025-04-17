@@ -1,14 +1,19 @@
-@startumlclass Human
-A --> B     : solid arrow
-A ..> B     : dashed arrow
-A o-- B     : aggregation
-A *-- B     : composition
-A <|-- B    : inheritance
-A <-- B     : reverse arrow
+@startuml
+class NPC
+class Relationship
+class State
+class Schedule
+class Action
+class Walk
+class Sleep
+class Idle
 
-interface Eater {
-  +eat(Food)
-}
-
-Human ..|> Eater : Human implements Eater
+NPC --> Schedule
+NPC --> State
+NPC -- Relationship
+Schedule --> State
+State --> Action
+Walk <|-- State
+Sleep <|-- State
+Idle <|-- State
 @enduml
