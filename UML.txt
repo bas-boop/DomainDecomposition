@@ -1,4 +1,8 @@
 @startuml
+
+Interface IInteractable
+
+Class Player
 Class Craftable
 Class RecourceList
 Class RecourceChecker
@@ -6,11 +10,17 @@ Class Interactor
 Class Inventory
 Class Crafter
 
+Player *-- Interactor
+Player *-- Inventory
+
+
+Craftable ..|> IInteractable
+
 Interactor --> Craftable
-Craftable --> RecourceChecker
-Craftable--> RecourceList
+Craftable *-- RecourceChecker
+Craftable *-- RecourceList
+Craftable *-- Crafter
 
 RecourceChecker --> Inventory
-RecourceChecker --> Crafter
 Crafter --> Inventory
 @enduml
