@@ -1,14 +1,28 @@
-@startumlclass Human
-A --> B     : solid arrow
-A ..> B     : dashed arrow
-A o-- B     : aggregation
-A *-- B     : composition
-A <|-- B    : inheritance
-A <-- B     : reverse arrow
+@startuml
 
-interface Eater {
-  +eat(Food)
-}
+Interface IInteractable
+Interface ICraftable
 
-Human ..|> Eater : Human implements Eater
+Class Player
+Class CraftableItem
+
+Class RecourceList
+Class RecourceChecker
+Class Interactor
+Class Inventory
+Class Crafter
+
+CraftableItem ..|> ICraftable
+CraftableItem ..|> IInteractable
+
+Player *-- Interactor
+Player *-- Inventory
+
+Interactor --> IInteractable
+ICraftable *-- RecourceChecker
+ICraftable *-- RecourceList
+ICraftable *-- Crafter
+
+RecourceChecker --> Inventory
+Crafter --> Inventory
 @enduml
