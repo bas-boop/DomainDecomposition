@@ -1,20 +1,24 @@
 @startuml
 
-Class Rock
-Class LootTable
-Class Dropper
+interface IInteractable
+interface IDropper
+interface IDroppable
 
-interface IHealth{
-  +Damage(int damage)
-  +Heal(int amount)
-  +Death()
-}
+class ItemObject
 
-IHealth -> Rock
+class LootTable
+class WorldObject
+class Health
 
-Rock..|> Dropper : When Hit points < 0 do Death()
+IInteractable --|> WorldObject
+IDropper --|> WorldObject
 
-LootTable -> Dropper : Send drop details on start
+IDroppable --|> ItemObject
+ItemObject --> LootTable
 
+WorldObject --> Health : send damage data
+Health --> Lootable : If hit points < 0 invoke death event
+
+Lootable -> WorldObject : Call Drop with the drop data
 
 @enduml
