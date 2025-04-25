@@ -1,0 +1,20 @@
+@startuml
+
+Class Rock
+Class LootTable
+Class Dropper
+
+interface IHealth{
+  +Damage(int damage)
+  +Heal(int amount)
+  +Death()
+}
+
+IHealth -> Rock
+
+Rock..|> Dropper : When Hit points < 0 do Death()
+
+LootTable -> Dropper : Send drop details on start
+
+
+@enduml
