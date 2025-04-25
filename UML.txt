@@ -4,16 +4,22 @@ class Relationship
 class State
 class Schedule
 class Action
+class Transition
 class Walk
 class Sleep
 class Idle
+class Talking
+class Player
 
 NPC --> Schedule
 NPC --> State
-NPC -- Relationship
+Transition *-- State
+NPC *-- Relationship
+Player *-- Relationship
 Schedule --> State
 State --> Action
 Walk <|-- State
 Sleep <|-- State
 Idle <|-- State
+Talking <|-- State
 @enduml
