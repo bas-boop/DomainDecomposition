@@ -1,4 +1,8 @@
 @startuml
+class Item
+ItemObject <|-- Item
+CraftableItem <|-- Item
+
 class NPC
 class Relationship
 class State
@@ -22,4 +26,51 @@ Walk <|-- State
 Sleep <|-- State
 Idle <|-- State
 Talking <|-- State
+
+Interface IInteractable
+Interface ICraftable
+
+Class CraftableItem
+
+Class RecourceList
+Class RecourceChecker
+Class Interactor
+Class Inventory
+Class Crafter
+
+CraftableItem ..|> ICraftable
+CraftableItem ..|> IInteractable
+
+Player *-- Interactor
+Player *-- Inventory
+
+Interactor --> IInteractable
+ICraftable *-- RecourceChecker
+ICraftable *-- RecourceList
+ICraftable *-- Crafter
+
+RecourceChecker --> Inventory
+Crafter --> Inventory
+
+interface IInteractable
+interface IDropper
+interface IDroppable
+
+class ItemObject
+
+class LootTable
+class WorldObject
+class Health
+
+IInteractable --|> WorldObject
+IDropper --|> WorldObject
+
+IDroppable --|> ItemObject
+ItemObject --> LootTable
+
+WorldObject --> Health : send damage data
+Health --> Lootable : If hit points < 0 invoke death event
+
+Lootable -> WorldObject : Call Drop with the drop data
+
 @enduml
