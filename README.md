@@ -1,2 +1,4 @@
 # DomainDecomposition
-Domain Decomposition assgiment HKU
+Domain Decomposition assgiment HKU. By Bas, Pablo, & Ryan.
+
+![Final UML](VisualUML/UmlFinal.png)
